@@ -1,9 +1,7 @@
-const charCodes = (text) => text.split("").map((char) => char.charCodeAt(0));
+const stringMap = (string, mapper) => string.split("").map(mapper).join("");
 
 const inverseBit = (char) => String.fromCharCode(char.charCodeAt(0) | 128);
-
-const encrypt = (text) => text.split("").map(inverseBit).join("");
-
 const revertBit = (char) => String.fromCharCode(char.charCodeAt(0) & 127);
 
-const decrypt = (text) => text.split("").map(revertBit).join("");
+const encrypt = (text) => stringMap(text, inverseBit);
+const decrypt = (text) => stringMap(text, revertBit);
